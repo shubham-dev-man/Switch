@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    int choice;
+    char str[100];
+    
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    printf("1. Count Vowels\n2. Count Consonants\n3. Count Digits\nEnter choice: ");
+    scanf("%d", &choice);
+
+    int v = 0, c = 0, d = 0, i;
+
+    for(i = 0; str[i] != '\0'; i++) {
+        if(isdigit(str[i])) d++;
+        else if(isalpha(str[i])) {
+            char ch = tolower(str[i]);
+            if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') v++;
+            else c++;
+        }
+    }
+
+    switch(choice) {
+        case 1: printf("Vowels = %d", v); break;
+        case 2: printf("Consonants = %d", c); break;
+        case 3: printf("Digits = %d", d); break;
+        default: printf("Invalid choice!");
+    }
+
+    return 0;
+}
